@@ -1,0 +1,22 @@
+{
+  "name": "argonaut",
+  "version": "0.0.0",
+  "description": "Argonaut will parse JSON with an incomplete tail",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Gzxgzxgzx/Argonaut.js.git"
+  },
+  "keywords": [
+    "JSON"
+  ],
+  "author": "Harlan James <root@aboyandhisgnu.org> (http://aboyandhisgnu.org)",
+  "license": "GPL-3.0+",
+  "bugs": {
+    "url": "https://github.com/Gzxgzxgzx/Argonaut.js/issues"
+  },
+  "homepage": "https://github.com/Gzxgzxgzx/Argonaut.js#readme"
+}
