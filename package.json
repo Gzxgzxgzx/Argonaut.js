@@ -1,7 +1,7 @@
 {
   "name": "argonaut",
   "version": "0.0.0",
-  "description": "Argonaut will parse JSON with an incomplete tail",
+  "description": "Parses non-terminated JSON",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
