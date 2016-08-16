@@ -19,21 +19,20 @@
 
 'use strict';
 
+const JSONMAP = {
+	"{" : "}",
+	"[" : "]",
+	"\"" : "\""
+};
+
 /**
  * @json - string containing valid, albeit non-terminated, JSON.
  */
-module.exports = function(json) {
-	const jsonmap = {
-		"{" : "}",
-		"[" : "]",
-		"\"" : "\""
-	};
-
+var argonaut = function(json) {
 	var stack = [];    
 	var seekv = false;    // Seek value
 	var seeke = false;    // Seek end (of array)
 	var chari;
-
 
 	Array.prototype.last = function() {
 		var i = this.length;
@@ -125,13 +124,13 @@ module.exports = function(json) {
 
 	// Append terminating values
 	for (var i = stack.length - 1 ; i >= 0; i--) {
-		json += jsonmap[stack[i]];
+		json += JSONMAP[stack[i]];
 	}
 
 	return json;
 };
 
-module.exports.test = function() {
+var test = function() {
 	var test0 = "{";
 	var test1 = "{\"";
 	var test2 = "{\"key";
@@ -139,14 +138,21 @@ module.exports.test = function() {
 	var test4 = "{\"key\": [";
 	var test5 = "{\"key\": [0.124,";
 	var test6 = "{\"key\": [0.124]";
-	var test7 = "{\"key\": [0.124,0.124,0.123]}";
+	var test7 = "{\"key\": [0.124,0.124,0.123], \"anotherKey\": [{},{\"subkey\":[124.01, 1231.0,";
+	var test8 = "{\"key\": [0.124,0.124,0.123]}";
 
-	console.log(test0 + " ==> " + test(test0));
-	console.log(test1 + " ==> " + test(test1));
-	console.log(test2 + " ==> " + test(test2));
-	console.log(test3 + " ==> " + test(test3));
-	console.log(test4 + " ==> " + test(test4));
-	console.log(test5 + " ==> " + test(test5));
-	console.log(test6 + " ==> " + test(test6));
-	console.log(test7 + " ==> " + test(test7));
+	console.log(test0 + " ==> \n" + argonaut(test0));
+	console.log(test1 + " ==> \n" + argonaut(test1));
+	console.log(test2 + " ==> \n" + argonaut(test2));
+	console.log(test3 + " ==> \n" + argonaut(test3));
+	console.log(test4 + " ==> \n" + argonaut(test4));
+	console.log(test5 + " ==> \n" + argonaut(test5));
+	console.log(test6 + " ==> \n" + argonaut(test6));
+	console.log(test7 + " ==> \n" + argonaut(test7));
+	console.log(test8 + " ==> \n" + argonaut(test8));
+
+	return test7;
 };
+
+module.exports = argonaut;
+module.exports.test = test;
