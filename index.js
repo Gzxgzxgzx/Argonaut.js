@@ -27,6 +27,7 @@ const JSONMAP = {
 
 /**
  * @json - string containing valid, albeit non-terminated, JSON.
+ * @returns - terminated json string
  */
 var argonaut = function(json) {
 	var stack = [];    
